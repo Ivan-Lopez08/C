@@ -1,0 +1,24 @@
+#include <stdio.h>
+
+int main(void)
+{
+    int n;
+    //pedir el tamanio del bloque
+    do
+    {
+        printf("De que tamanio desea el recuadro? ");
+        scanf("%i", &n);
+    }
+    while(n<=0);
+
+    //imprimir un bloque cuadrado
+    for (int i = 0; i < n; i++)
+    {
+        for (int j = 0; j < n; j++)
+        {
+            printf("#");
+        }
+        printf("\n");
+    }
+    printf("\n");
+}
