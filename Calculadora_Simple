@@ -1,0 +1,66 @@
+#include <stdio.h>
+
+void srmd(long X, long Y, int op);
+int menu( void );
+
+int main(void)
+{
+    int op = 0;
+    long X, Y;
+    do
+    {
+        op = menu();
+
+        if (op != 5)
+        {
+            printf("Ingrese el valor de X: ");
+            scanf("%li",&X);
+
+            printf("Ingrese el valor de Y: ");
+            scanf("%li",&Y);
+
+            srmd(X,Y,op);
+        }       
+    }    
+    while ( op != 5 ) ;    
+}
+
+void srmd(long X, long Y, int op)
+{
+    float answer;
+    switch (op)
+    {
+    case 1:
+        printf("La suma de los valores es: %li\n\n", X + Y);
+        break;
+    case 2:
+        printf("La resta de los valores es: %li\n\n", X - Y);
+        break;
+    case 3:
+        printf("La multiplicacion de los valores es: %li\n\n", X * Y);
+        break;
+    case 4:
+        answer = (float) X / (float) Y;
+        printf("La division de los valores es: %f\n\n", answer);
+        break;    
+    default:
+        break;
+    }
+}
+
+int menu( void )
+{
+    int op = 0;
+    printf("********************Menu********************\n");
+        printf("Seleccione una de las siguientes opciones:\n");
+        printf("1. Suma\n");
+        printf("2. Resta\n");
+        printf("3. Multiplicacion\n");
+        printf("4. Division\n");
+        printf("5. Salir \n");
+        
+        scanf(" %i",&op);
+        getchar();
+
+    return op;
+}
