@@ -1,0 +1,23 @@
+#include <stdio.h>
+#include <stdbool.h>
+
+int main(void)
+{
+    int count = 5;
+
+    while ( count > 0)
+    {
+        printf("meow\n");
+        count --;
+    }
+
+    for (int i = 0; i < 3 ; i++)
+    {
+        printf("wouf\n");
+    }
+
+    while (true)
+    {
+        printf("infinite loop\n");
+    }
+}
