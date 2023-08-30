@@ -1,0 +1,40 @@
+#include <stdio.h>
+
+int main(void)
+{
+    int X, Y;
+    char answer;
+
+    printf("Ingrese el valor de X: ");
+    scanf("%i", &X);
+
+    printf("Ingrese el valor de Y: ");
+    scanf("%i", &Y);
+
+    if ( X < Y )
+    {
+        printf("X es menor que Y\n");   
+    } 
+    else if ( X > Y )
+    {
+        printf("X es mayor que Y\n");
+    }
+    else
+    {
+        printf("X es igual que Y\n");
+    }
+
+    printf("la suma de X y Y es: %i \n", X+Y);
+
+    printf("Esta de acuerdo? ");
+    scanf(" %c", &answer);
+
+    if ( answer == 's' || answer == 'S')
+    {
+        printf("Usted esta de acuerdo\n");
+    }
+    else if (answer == 'n' || answer == 'N')
+    {
+        printf("Usted no esta de acuerdo");
+    }
+}
