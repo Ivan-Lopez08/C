@@ -1,0 +1,35 @@
+#include <stdio.h>
+
+int main(void)
+{   
+    int inicial, final;
+    int anios = 0;
+
+    //pedirle al usuario el numero inicial de llamas
+    do
+    {
+        printf("Cuantas llamas tiene actualmente? ");
+        scanf("%i", &inicial);
+    } 
+    while (inicial < 0);
+    
+    //pedirle la cantidad final deseada de llamas 
+    do
+    {
+        printf("A que cantidad de llamas desea llegar? ");
+        scanf("%i", &final);
+    }
+    while (final < inicial);
+    
+    //Calcular cuantos anios tomaria llegar al mumero deseado 
+    //Basandonos en que cada anio 1/3 de cantidad de llamas nace y 1/4 muere
+    
+    while( inicial < final)
+    {
+        inicial += (inicial/3) - (inicial/4);
+        anios++;
+    }
+
+    //imprimir el resultado
+    printf("se necesitarian %i anios para llegar a %i llamas", anios, final);
+}
