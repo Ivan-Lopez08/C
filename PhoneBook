@@ -1,0 +1,18 @@
+#include <stdio.h>
+
+int main(void)
+{
+    char name[100];
+    int age, phone;
+
+    printf("Escriba su nombre: ");
+    scanf("%99s", &name);
+
+    printf("Escriba su edad: ");
+    scanf("%i", &age);
+
+    printf("Escriba su numero de telefono: ");
+    scanf("%i", &phone);
+
+    printf("Mucho gusto %s, ya guarde su edad como %i y su numero de telefono %i \n", name, age,phone);
+}
