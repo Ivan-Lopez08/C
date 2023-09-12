@@ -1,0 +1,106 @@
+#include <cs50.h>
+#include <stdio.h>
+
+int main(void)
+{
+    // Pedirle el numero de la tarjeta al usuario
+    long num = get_long("Number: ");
+
+    // Calcular la suma de los digitos pares * 2
+    long dividendo1 = 100;
+    long divisor1 = 10;
+    int total = 0;
+    for (int i = 0; i < 8; i++)
+    {
+        int a, b;
+        int result = (num % dividendo1 / divisor1) * 2;
+        if ((result % 100 / 10) > 0)
+        {
+            a = result % 10;
+            b = result % 100 / 10;
+            total += (a + b);
+        }
+        else
+        {
+            total += result;
+        }
+        divisor1 *= 100;
+        dividendo1 *= 100;
+    }
+
+    // Sumarle el total de los digitos pares con los numeros impares
+    long dividendo = 10;
+    long divisor = 1;
+    for (int i = 0; i < 8; i++)
+    {
+        total += (num % dividendo / divisor);
+        divisor *= 100;
+        dividendo *= 100;
+    }
+
+    // revisar si el ultimo digito del total es igual a 0
+    bool checksum = false;
+    if (total % 10 == 0)
+    {
+        checksum = true;
+    }
+
+    // Revisar la cantidad de caracteres
+    int count = 0;
+    long temp_num = num;
+
+    while (temp_num != 0)
+    {
+        temp_num /= 10;
+        ++count;
+    }
+
+    // Categorizar si es AMEX, MASTERCARD, VISA o INVALID
+    int start1 = 0, start2 = 0;
+    if (checksum == true && count == 15)
+    {
+        start1 = num % 1000000000000000 / 100000000000000;
+        start2 = num % 100000000000000 / 10000000000000;
+        if (start1 == 3 && (start2 == 4 || start2 == 7))
+        {
+            printf("AMEX\n");
+        }
+        else
+        {
+            printf("INVALID\n");
+        }
+    }
+    else if (checksum == true && count == 16)
+    {
+        start1 = num % 10000000000000000 / 1000000000000000;
+        start2 = num % 1000000000000000 / 100000000000000;
+        if (start1 == 5 && (start2 == 1 || start2 == 2 || start2 == 3 || start2 == 4 || start2 == 5))
+        {
+            printf("MASTERCARD\n");
+        }
+        else if (start1 == 4)
+        {
+            printf("VISA\n");
+        }
+        else
+        {
+            printf("INVALID\n");
+        }
+    }
+    else if (checksum == true && count == 13)
+    {
+        start1 = num % 10000000000000 / 1000000000000;
+        if (start1 == 4)
+        {
+            printf("VISA\n");
+        }
+        else
+        {
+            printf("INVALID\n");
+        }
+    }
+    else
+    {
+        printf("INVALID\n");
+    }
+}
