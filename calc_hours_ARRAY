@@ -1,0 +1,42 @@
+#include <cs50.h>
+#include <ctype.h>
+#include <stdio.h>
+
+float calc_hours(int weeks, int array[], char opt);
+
+int main(void)
+{
+    int weeks = get_int("Number of weeks taking CS50: ");
+
+    int HW[weeks];
+
+    for (int i = 0; i < weeks; i++)
+    {
+        HW[i] = get_int("Week %i HW Hours: ", i);
+    }
+
+    char opt = toupper(get_char("Enter T for total hours, A for average hours per week: "));
+
+    printf("%.2f hours\n", calc_hours(weeks, HW, opt));
+}
+
+float calc_hours(int weeks, int array[], char opt)
+{
+    float T = 0.0;
+
+    for (int i = 0; i < weeks; i++)
+    {
+        T += array[i];
+    }
+
+    if (opt == 'T')
+    {
+        return T;
+    }
+    else if (opt == 'A')
+    {
+        return T / weeks;
+    }
+
+    return 0.0;
+}
